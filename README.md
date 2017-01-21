@@ -12,3 +12,9 @@ API end point details:
 
 * Cancel/Extend a booking - '/booking/user_bookings'
 
+Form filling cases missed:
+
+* Start Time should be earlier than End Time and farther than current time.
+
+
+
