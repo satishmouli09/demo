@@ -1,0 +1,10 @@
+<h1>Please enter your mobile number to get your Bookings</h1>
+
+<%= form_tag :action => 'list' do %>
+
+<p><label for = "phone_number">Phone Number</label>:
+<%= text_field 'user', 'phone_number'%></p>
+
+<%= submit_tag "Get Bookings" %>
+
+<% end -%>

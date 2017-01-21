@@ -1,0 +1,12 @@
+<h1>Bike details</h1>
+
+<%= form_tag url_for(:controller => :booking, :action => :create) do %>
+
+<%= hidden_field_tag :booking_details, @params %>
+
+<h2>Bike Model: &nbsp; <%= @bike.model %><h2>
+<h3>Bike Reg: &nbsp;&nbsp;&nbsp; <%= @bike.reg_no %><h3>
+
+<%= submit_tag "Book" %>
+
+<% end -%>

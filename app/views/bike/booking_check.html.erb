@@ -1,0 +1,15 @@
+<h1>Book a Bike</h1>
+
+<%= form_tag :action => 'list' do %>
+
+<%= hidden_field_tag :user_id, @user_id %>
+
+<p><label for = "start_time">Start_Time</label>;
+<%= datetime_local_field 'booking', 'start_time' %></p>
+
+<p><label for = "end_time">End_Time</label>;
+<%= datetime_local_field 'booking', 'end_time' %></p>
+
+<%= submit_tag "Get available Bikes" %>
+
+<% end -%>

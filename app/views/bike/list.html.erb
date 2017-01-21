@@ -1,0 +1,12 @@
+<% if @bikes.blank? %>
+<p>There are not any bikes currently available.</p>
+<% else %>
+<p>Available Bikes</p>
+
+<ul id = "bikes">
+  <% @bikes.each do |bike| %>
+  <% @booking_details.merge!({:bike_id => bike.id}) %>
+  <li><%= link_to bike.model, {:action => :show, :params => @booking_details} -%></li>
+  <% end %>
+</ul>
+<% end %>

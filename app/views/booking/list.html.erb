@@ -1,0 +1,16 @@
+<% if @user %>
+  <% unless @bookings.blank? %>
+    <p>Current Bookings list</p>
+
+    <ul id = "bookings">
+      <% @bookings.each do |booking| %>
+      <% booking_details = {:booking_id => booking.id, :bike_id => booking.bike.id} %>
+      <li><%= link_to booking.bike.model, {:action => :show, :booking_details => booking_details} -%></li>
+      <% end %>
+    </ul>
+  <% else %>
+  <h2> There are no current bookings </h2>
+  <% end %>
+<% else %>
+<h2>There are not any bookings yet.</h2>
+<% end %>

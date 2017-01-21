@@ -1,0 +1,18 @@
+<h2> Cancel <h2>
+<li><%= link_to 'Cancel', {:action => :cancel, :params => @booking_details} -%></li>
+
+<h2> Extend <h2>
+
+<%= form_tag :action => 'extend' do %>
+
+<%= hidden_field_tag :booking_details, @booking_details %>
+
+<p><label for = "start_time">Start Time</label>
+<%= datetime_local_field 'extension', 'start_time' %></p>
+
+<p><label for = "end_time">End Time</label>
+<%= datetime_local_field 'extension', 'end_time' %></p>
+
+<%= submit_tag "Extend" %>
+
+<% end -%>

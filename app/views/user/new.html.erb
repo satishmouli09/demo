@@ -1,0 +1,14 @@
+<h1>Enter your details</h1>
+
+<%= form_tag :action => 'create' do %>
+
+<p><label for = "phone_number">Phone Number</label>:
+<%= text_field 'user', 'phone_number'%></p>
+
+<p><label for = "name">Name</label>;
+<%= text_field 'user', 'name' %></p>
+
+
+<%= submit_tag "Book a Bike" %>
+
+<% end -%>
