@@ -1,24 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby version -  2.2.6p396
 
-Things you may want to cover:
+* Rails verion - 5.0.1
 
-* Ruby version
+* Database - bike_booking_dev 
 
-* System dependencies
+API end point details:
 
-* Configuration
+* Book a bike - '/user/new'
 
-* Database creation
+* Cancel/Extend a booking - '/booking/user_bookings'
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
