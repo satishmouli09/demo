@@ -12,9 +12,6 @@ class BookingController < ApplicationController
     @booking_details = {:bike_id => params["booking_details"]["bike_id"], :booking_id => params["booking_details"]["booking_id"]}
   end
 
-  # def user_bookings
-  # end
-
   def create
     booking_details = eval(params["booking_details"])
     @booking = Booking.new(booking_details)
