@@ -11,10 +11,6 @@ class BookingController < ApplicationController
   def show
     @booking_details = {:bike_id => params["booking_details"]["bike_id"], :booking_id => params["booking_details"]["booking_id"]}
   end
-  
-  def new
-    @book = Booking.new
-  end
 
   # def user_bookings
   # end
@@ -28,7 +24,6 @@ class BookingController < ApplicationController
   end
 
   def cancel
-    puts "YYYYYYYYYYYYYYYYYYYYYYYYYYYYyy #{params["booking_id"]} YYYYYYYYYYYYYYYYYYYYYYYYYY"
     @booking = Booking.find(params["booking_id"])
     if @booking.cancelation_eligible?
       @booking.cancel
@@ -39,36 +34,15 @@ class BookingController < ApplicationController
   end
 
   def extend
-    # puts "FFFFFFFFFFFFFFFFFFFFFFFF #{eval(params["booking_details"])[:bike_id]} FFFFFFFFFFFFFFFFFFF"
     @extended_start_time = params["extension"]["start_time"]
     @extended_end_time = params["extension"]["end_time"]
     @booking_id = eval(params["booking_details"])[:booking_id]
     @booking = Booking.find(@booking_id)
     if  @booking.extension_eligible?(@extended_start_time, @extended_end_time)
       @booking.extend_booking(@extended_start_time, @extended_end_time)
-      render "Booking extended"
+      render plain: "Booking extended"
     else
-      render plain "Sorry! Booking can't be extended"
+      render plain: "Sorry! Booking can't be extended"
     end
   end
-
-  def edit
-    @booking = Booking.find(params[:id])
-  end
-   
-  def update
-    @booking = Booking.find(params[:id])
-    if @booking.update_attributes(params)
-       redirect_to :action => 'show', :id => @book
-    else
-       @subjects = Subject.all
-       render :action => 'edit'
-    end
-  end
-   
-  def delete
-    Book.find(params[:id]).destroy
-    redirect_to :action => 'list'
-  end
-
 end

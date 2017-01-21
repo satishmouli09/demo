@@ -17,15 +17,15 @@ class Booking < ApplicationRecord
 
   def pre_extension_eligible?(start_time)
     return true if self.start_time == start_time
-    bookings = Booking.joins(:bike).where("(start_time NOT between ? and ?) && (end_time NOT between ? and ?) && bike_id = ? 
-                                            && !canceled", start_time, self.start_time, start_time, self.start_time, self.bike_id)
+    bookings = Booking.joins(:bike).where("(start_time NOT between ? and ?) && (end_time NOT between ? and ?) && bike_id = ? && bookings.id != ?
+                                            && !canceled", start_time, self.start_time, start_time, self.start_time, self.bike_id, self.id)
     return (bookings.present? ? true : false)
   end
 
   def post_extension_eligible?(end_time)
     return true if self.end_time == end_time
-    bookings = Booking.joins(:bike).where("(start_time NOT between ? and ?) && (end_time NOT between ? and ?) && bike_id = ? 
-                                            && !canceled", self.end_time, end_time, self.end_time, end_time, self.bike_id)
+    bookings = Booking.joins(:bike).where("(start_time NOT between ? and ?) && (end_time NOT between ? and ?) && bike_id = ? && bookings.id != ?
+                                            && !canceled", self.end_time, end_time, self.end_time, end_time, self.bike_id, self.id)
     return (bookings.present? ? true : false)
   end
 
